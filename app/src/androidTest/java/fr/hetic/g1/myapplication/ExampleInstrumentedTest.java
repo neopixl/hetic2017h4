@@ -1,4 +1,4 @@
-package fr.hetic.g1.groupe1;
+package fr.hetic.g1.myapplication;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("fr.hetic.g1.groupe1", appContext.getPackageName());
+        assertEquals("fr.hetic.g1.myapplication", appContext.getPackageName());
     }
 }

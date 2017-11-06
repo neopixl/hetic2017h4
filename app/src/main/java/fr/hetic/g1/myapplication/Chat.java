@@ -1,4 +1,4 @@
-package fr.hetic.g1.groupe1;
+package fr.hetic.g1.myapplication;
 
 /**
  * Created by Florian ALONSO on 11/6/17.

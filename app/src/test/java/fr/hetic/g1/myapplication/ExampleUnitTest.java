@@ -1,4 +1,4 @@
-package fr.hetic.g1.groupe1;
+package fr.hetic.g1.myapplication;
 
 import org.junit.Test;
 
