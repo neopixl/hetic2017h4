@@ -4,19 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.hetic.g2.myapplication.MainActivity"
-    android:background="#FF0000">
+    tools:context="fr.hetic.g2.myapplication.MainActivity">
 
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#0000FF">
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

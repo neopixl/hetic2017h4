@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .add(R.id.container, mainFragment)
                 .addToBackStack(null)
-                .commit();
+        .commit();
 
     }
 
