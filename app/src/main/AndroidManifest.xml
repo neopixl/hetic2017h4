@@ -21,7 +21,8 @@
         <activity
             android:name=".LoggedActivity"
             android:label="@string/title_activity_logged"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ListActivity"></activity>
     </application>
 
 </manifest>

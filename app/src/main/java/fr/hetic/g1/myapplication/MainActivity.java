@@ -3,7 +3,11 @@ package fr.hetic.g1.myapplication;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,6 +15,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -25,14 +30,11 @@ import butterknife.OnLongClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.validationButton)
-    Button myButtonValidation;
+    @BindView(R.id.containerTop)
+    FrameLayout containerTop;
 
-    @BindView(R.id.editTextEmail) EditText emailEditText;
-    @BindView(R.id.editTextPassword) EditText passwordEditText;
-
-    @BindView(R.id.textValidation)
-    TextView validationText;
+    @BindView(R.id.containerBottom)
+    FrameLayout containerBottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,52 +42,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        MessageFragment messageFragment = new MessageFragment();
+        fragmentManager.beginTransaction()
+                .add(R.id.containerTop, messageFragment)
+                .commit();
+
+
+        LoginFragment loginFragment = new LoginFragment();
+        loginFragment.messageFragment = messageFragment;
+        fragmentManager.beginTransaction()
+                .add(R.id.containerBottom, loginFragment)
+                .commit();
+
+
+
+
+
+
+
+
+        //Drawable monIcone =
+        //        ContextCompat.getDrawable(this,
+        //                R.drawable.ic_launcher_foreground);
+
+        int rouge = 2;
+        int rougeRessourceIdentifier = R.color.colorAccent;
+        int rougeRessource = ContextCompat.getColor(this,
+                R.color.colorAccent);
+        Log.d("ads", "asda");
     }
 
-    @OnClick(R.id.validationButton)
-    void onValidationClick() {
-        Log.d("LOL", "J'ai cliquer");
-
-
-        String monEmail = emailEditText.getText().toString(); // Recupere mon Email
-        String monPassword = passwordEditText.getText().toString(); // Recupere mon Password
-
-        if (monEmail.equals("florian@neopixl.com")
-                && monPassword.equals("flori4n")) {
-            validationText.setText("Youpie c'est moi");
-
-            Intent newIntent = new Intent(this, LoggedActivity.class);
-            //startActivity(newIntent);
-
-            startActivityForResult(newIntent, 15);
-
-
-
-
-
-
-        } else {
-            validationText.setText("Ah zut, c'est pas moi");
-
-            InputMethodManager manager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-            manager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(),0);
-
-
-            AlertDialog alertDialog = new AlertDialog
-                    .Builder(this)
-                    .setMessage("Coucou")
-                    .setTitle("Mon title")
-                    .setCancelable(false)
-                    .setPositiveButton("Mon button", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Log.d("LOL", "J'ai cliquer sur mon bouton");
-                        }
-                    })
-                    .create();
-
-            alertDialog.show();
-        }
+    @OnClick(R.id.goNext)
+    public void goNext() {
+        Intent intent = new Intent(this, ListActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -96,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 15
                 && resultCode == Activity.RESULT_CANCELED) {
 
-            validationText.setText("Alalal, tu as annuler");
+            //validationText.setText("Alalal, tu as annuler");
         } else if (requestCode == 15
                 && resultCode == Activity.RESULT_OK) {
 
-            validationText.setText("YOupie, tu as accepter les conditions generales");
+            //validationText.setText("YOupie, tu as accepter les conditions generales");
 
         }
     }
