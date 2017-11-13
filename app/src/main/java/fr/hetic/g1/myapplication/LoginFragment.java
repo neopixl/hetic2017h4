@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +37,9 @@ public class LoginFragment extends Fragment {
     @BindView(R.id.editTextPassword)
     EditText passwordEditText;
 
+    @BindView(R.id.distantImageView)
+    ImageView imageView;
+
     MessageFragment messageFragment;
 
     public LoginFragment() {
@@ -47,6 +53,11 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.bind(this, root);
+
+        Glide.with(this)
+                .load("https://www.placecage.com/50/50")
+                .into(imageView);
+
         return root;
     }
 

@@ -17,12 +17,6 @@ public class ContactItem extends AbstractItem<ContactItem, ContactViewHolder> {
     public String name;
 
     @Override
-    public ContactViewHolder getViewHolder(View v) {
-        ContactViewHolder viewHolder = new ContactViewHolder(v);
-        return viewHolder;
-    }
-
-    @Override
     public int getType() {
         return 0;
     }
@@ -33,9 +27,15 @@ public class ContactItem extends AbstractItem<ContactItem, ContactViewHolder> {
     }
 
     @Override
+    public ContactViewHolder getViewHolder(View v) {
+        return new ContactViewHolder(v);
+    }
+
+    @Override
     public void bindView(ContactViewHolder holder, List<Object> payloads) {
         super.bindView(holder, payloads);
 
         holder.setName(this.name);
+        holder.setSelected(this.isSelected());
     }
 }

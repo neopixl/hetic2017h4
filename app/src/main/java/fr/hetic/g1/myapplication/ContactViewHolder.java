@@ -1,5 +1,7 @@
 package fr.hetic.g1.myapplication;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -25,5 +27,18 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
 
     public void setName(String name) {
         this.nameTextView.setText(name);
+    }
+
+    public void setSelected(boolean selected) {
+        Context context = nameTextView.getContext();
+
+        int color = 0;
+        if (selected) {
+            color = ContextCompat.getColor(context, R.color.green);
+        } else {
+            color = ContextCompat.getColor(context, R.color.black);
+        }
+
+        this.nameTextView.setTextColor(color);
     }
 }

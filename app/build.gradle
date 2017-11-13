@@ -30,6 +30,13 @@ dependencies {
 
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
     implementation 'com.mikepenz:fastadapter:3.0.0@aar'
     implementation 'com.mikepenz:fastadapter-commons:3.0.0@aar'
+
+    compile 'com.neopixl:spitfire:1.0.0'
+    compile 'com.android.volley:volley:1.0.0'
+
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
 }
