@@ -14,7 +14,10 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +39,8 @@ public class MainFragment extends Fragment {
     EditText passwordEditText;
     @BindView(R.id.textViewTitle)
     TextView title;
+    @BindView(R.id.cageImageView)
+    ImageView cageImageView;
 
 
     public MainFragment() {
@@ -49,6 +54,10 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
+
+        Glide.with(this)
+                .load("https://www.placecage.com/150/150")
+                .into(cageImageView);
 
 
         return view;

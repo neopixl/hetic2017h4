@@ -28,9 +28,21 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
+    // Permet de recupere les elements graphique
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
+    // Permet de gere les liste
     implementation 'com.mikepenz:fastadapter:3.0.0@aar'
     implementation 'com.mikepenz:fastadapter-commons:3.0.0@aar'
+
+
+    // Permet de gere le network avec JSON
+    compile 'com.neopixl:spitfire:1.0.0'
+    compile 'com.android.volley:volley:1.0.0'
+
+
+    // Permet de gere le download d'image
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
 }

@@ -2,7 +2,6 @@ package fr.hetic.g2.myapplication;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,11 +10,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.IItem;
 import com.mikepenz.fastadapter.adapters.ItemAdapter;
 import com.mikepenz.fastadapter.listeners.OnClickListener;
+import com.neopixl.spitfire.listener.RequestListener;
+import com.neopixl.spitfire.request.BaseRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +27,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.hetic.g2.myapplication.item.ContactItem;
+import fr.hetic.g2.myapplication.response.PersonResponse;
+import fr.hetic.g2.myapplication.response.RandomNamesResponse;
 
 public class LoggedActivity extends AppCompatActivity {
 
@@ -51,22 +57,26 @@ public class LoggedActivity extends AppCompatActivity {
 
 
 
-
-
-
-
         final List<String> nameList = new ArrayList<>();
         for (int index = 0 ; index < 6000; index++) {
             nameList.add("Florian_"+ index);
         }
 
+        fillrecycler(nameList);
+
+        loadDistantNames();
+    }
+
+    public void fillrecycler(final List<String> nameList) {
 
         ItemAdapter<ContactItem> itemAdapter = new ItemAdapter<>();
         FastAdapter fastAdapter = FastAdapter.with(itemAdapter);
         recyclerView.setAdapter(fastAdapter);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        layoutManager = new GridLayoutManager(this, 3);
+        RecyclerView.LayoutManager layoutManager =
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        layoutManager =
+                new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
 
 
@@ -92,9 +102,41 @@ public class LoggedActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public void loadDistantNames() {
+        BaseRequest<RandomNamesResponse> request =
+                new BaseRequest.Builder<>(Request.Method.GET
+                        , "https://randomuser.me/api/?results=100"
+                        , RandomNamesResponse.class)
+                        .listener(new RequestListener<RandomNamesResponse>() {
+                            @Override
+                            public void onSuccess(Request request, NetworkResponse response, RandomNamesResponse result) {
+                                fillRecyclerFromRandomNamesResponse(result);
+                            }
+
+                            @Override
+                            public void onFailure(Request request, NetworkResponse response, VolleyError error) {
+                                Toast.makeText(LoggedActivity.this, "FAIL", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                .build();
 
 
+        HeticApplication heticApplication =
+                (HeticApplication) getApplication();
+        heticApplication.getRequestQueue().add(request);
+    }
 
+    public void fillRecyclerFromRandomNamesResponse(RandomNamesResponse response) {
+        List<String> distantNameList = new ArrayList<>();
+
+        for (PersonResponse personResponse : response.getResults()) {
+            String name = personResponse.getName().getFirst();
+            distantNameList.add(name);
+        }
+
+        fillrecycler(distantNameList);
     }
 
 }
