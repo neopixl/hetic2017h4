@@ -18,6 +18,8 @@ public class HeticApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // Il faut cree la request queue dans l'application car si on le fait dans l'activiter
+        // Quand on change d'activité celle-ci est detruite et donc la requete aussi
         requestQueue = Volley.newRequestQueue(this);
         requestQueue.start();
     }

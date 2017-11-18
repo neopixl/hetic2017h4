@@ -26,6 +26,7 @@ import fr.hetic.g1.myapplication.request.response.RandomNamesResponse;
 public class FakeRequestManager extends Activity {
 
     public void fakePostRequest() {
+        // Fait une requete post avec en BODY le JSON comme pour ce connecter
 
         FakeLoginRequest fakeLoginRequest = new FakeLoginRequest();
         fakeLoginRequest.setEmail("florian@neopixl.com");
@@ -63,6 +64,10 @@ public class FakeRequestManager extends Activity {
 
 
     public void fakeMultiUpload() {
+        // Uplaod des image en multipart
+
+
+
         // EXEMPLE DE CONVERSION D'UNE IMAGE VERS UN TABLEAU DE BYTE
         //Bitmap bitmap = null;
         //ByteArrayOutputStream stream = new ByteArrayOutputStream();

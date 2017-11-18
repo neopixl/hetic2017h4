@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
+        // Affiche le fragment dans la page
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         MessageFragment messageFragment = new MessageFragment();
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
 
 
+        // Affiche le fragment dans la page
         LoginFragment loginFragment = new LoginFragment();
         loginFragment.messageFragment = messageFragment;
         fragmentManager.beginTransaction()

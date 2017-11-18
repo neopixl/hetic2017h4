@@ -26,6 +26,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fr.hetic.g1.myapplication.item.ContactItem;
 import fr.hetic.g1.myapplication.request.response.PersonResponse;
 import fr.hetic.g1.myapplication.request.response.RandomNamesResponse;
 
@@ -45,6 +46,7 @@ public class ListActivity extends AppCompatActivity {
         headers.put("X-PROVENANCE", "HETIC");
 
 
+        // Lance une requette reseau pour recuperer des noms aleatoire sur le site randomuser.me
         BaseRequest<RandomNamesResponse> request =
                 new BaseRequest.Builder<>(Request.Method.GET,
                     "https://randomuser.me/api/?results=100", RandomNamesResponse.class)
@@ -100,6 +102,7 @@ public class ListActivity extends AppCompatActivity {
 
 
     public void fillRecycler(final List<String> nameList) {
+        // Crée les adapteur de la library
         ItemAdapter<ContactItem> itemAdapter = new ItemAdapter();
         FastAdapter fastAdapter = FastAdapter.with(itemAdapter);
 
@@ -115,14 +118,17 @@ public class ListActivity extends AppCompatActivity {
                 new LinearLayoutManager(this,
                         LinearLayoutManager.VERTICAL,
                         false);
-        //layoutManager = new GridLayoutManager(this, 3);
+        layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
+        // Defini le layout en grid, donc en grille de 3 colone
 
         fastAdapter.withSelectable(true);
         fastAdapter.withMultiSelect(false);
         fastAdapter.withOnClickListener(new OnClickListener() {
             @Override
             public boolean onClick(View v, IAdapter adapter, IItem item, int position) {
+
+                // Lors du click on affiche les information
                 Toast.makeText(ListActivity.this,
                         "Cliked on "+ position,
                         Toast.LENGTH_SHORT).show();

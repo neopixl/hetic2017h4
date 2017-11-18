@@ -1,4 +1,4 @@
-package fr.hetic.g1.myapplication;
+package fr.hetic.g1.myapplication.viewholder;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fr.hetic.g1.myapplication.R;
 
 /**
  * Created by Florian ALONSO on 11/13/17.
@@ -30,6 +31,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setSelected(boolean selected) {
+        // Change la couleur du texte en fonction de la selection
         Context context = nameTextView.getContext();
 
         int color = 0;
