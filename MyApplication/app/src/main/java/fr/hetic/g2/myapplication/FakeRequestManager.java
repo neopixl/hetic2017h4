@@ -20,6 +20,7 @@ import fr.hetic.g2.myapplication.request.FakeLoginRequest;
 public class FakeRequestManager extends Activity {
 
     public void sendLoginRequest() {
+        // Fait une requete post avec en BODY le JSON comme pour ce connecter
         FakeLoginRequest fakeLoginRequest = new FakeLoginRequest();
         fakeLoginRequest.setEmail("florian@neopixl.com");
         fakeLoginRequest.setPassword("flori4n");
@@ -39,6 +40,8 @@ public class FakeRequestManager extends Activity {
     }
 
     public void sendFakeMultipleImage() {
+        // Uplaod des image en multipart
+
         byte[] maPhotoDeProfil = {1,0,0,0,1,1,1,1,0};
         RequestData dataProfil = new RequestData(
                 "jeSuisTropBeau.jpg",

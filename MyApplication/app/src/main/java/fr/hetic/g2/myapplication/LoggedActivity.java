@@ -68,6 +68,7 @@ public class LoggedActivity extends AppCompatActivity {
     }
 
     public void fillrecycler(final List<String> nameList) {
+        // Crée les adapteur de la library
 
         ItemAdapter<ContactItem> itemAdapter = new ItemAdapter<>();
         FastAdapter fastAdapter = FastAdapter.with(itemAdapter);
@@ -78,6 +79,7 @@ public class LoggedActivity extends AppCompatActivity {
         layoutManager =
                 new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
+        // Defini le layout en grid, donc en grille de 3 colone
 
 
         for (String name : nameList) {
@@ -92,11 +94,15 @@ public class LoggedActivity extends AppCompatActivity {
 
             @Override
             public boolean onClick(View v, IAdapter adapter, IItem item, int position) {
+                // Lors du click on affiche les information
                 Toast.makeText(LoggedActivity.this, "Clicker sur "+ position, Toast.LENGTH_SHORT).show();
 
                 String name = nameList.get(position);
                 Toast.makeText(LoggedActivity.this, name, Toast.LENGTH_SHORT).show();
 
+                // Demande à l'adapter de faire un refresh de cet item
+                // Est donc il ce redesine en prennant en compte le changement
+                // De couleurs
                 adapter.getFastAdapter().notifyAdapterItemChanged(position);
                 return false;
             }
@@ -105,6 +111,7 @@ public class LoggedActivity extends AppCompatActivity {
     }
 
     public void loadDistantNames() {
+        // Lance une requette reseau pour recuperer des noms aleatoire sur le site randomuser.me
         BaseRequest<RandomNamesResponse> request =
                 new BaseRequest.Builder<>(Request.Method.GET
                         , "https://randomuser.me/api/?results=100"

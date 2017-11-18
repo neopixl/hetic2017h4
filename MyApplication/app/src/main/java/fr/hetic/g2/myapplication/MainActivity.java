@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
+        // Affiche le fragment dans la page
         MainFragment mainFragment = new MainFragment();
 
         getSupportFragmentManager()

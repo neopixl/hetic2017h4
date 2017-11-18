@@ -31,6 +31,8 @@ public class ContactViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setIsSelected(boolean selected) {
+        // Change la couleur du texte en fonction de la selection
+
         Context context = nameTextView.getContext();
         int color = 0;
         if (selected) {
