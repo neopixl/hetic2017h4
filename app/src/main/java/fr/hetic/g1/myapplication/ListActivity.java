@@ -26,6 +26,11 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fr.hetic.g1.myapplication.database.DatabaseManager;
+import fr.hetic.g1.myapplication.database.PersonDB;
+import fr.hetic.g1.myapplication.database.PersonDBDao;
+import fr.hetic.g1.myapplication.database.PhoneDB;
+import fr.hetic.g1.myapplication.database.PhoneDBDao;
 import fr.hetic.g1.myapplication.item.ContactItem;
 import fr.hetic.g1.myapplication.request.response.PersonResponse;
 import fr.hetic.g1.myapplication.request.response.RandomNamesResponse;
@@ -34,6 +39,8 @@ public class ListActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+
+    private List<PersonDB> personDBList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +66,7 @@ public class ListActivity extends AppCompatActivity {
                         }
 
                         fillRecycler(emailList);
+                        fillDatabase(result.getResults());
                     }
 
                     @Override
@@ -93,10 +101,7 @@ public class ListActivity extends AppCompatActivity {
 
         fillRecycler(nameList);
 
-
-
-
-
+        getPersonFromDB();
 
     }
 
@@ -147,5 +152,90 @@ public class ListActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public void getPersonFromDB() {
+        // Affiche le nombre de personne en DB
+
+        DatabaseManager manager = DatabaseManager.getIntances(this);
+        PersonDBDao personDBDao = manager.getPersonDBDao();
+        PhoneDBDao phoneDBDao = manager.getPhoneDBDao();
+
+        personDBList =personDBDao
+                .queryBuilder()
+                .where(PersonDBDao.Properties.Email.isNotNull())
+                .build()
+                .list();
+
+        int nombrePersonne = personDBList.size();
+
+        Toast.makeText(this,
+                "Il y'a "+ nombrePersonne +" Personnes",
+                Toast.LENGTH_SHORT)
+                .show();
+
+        List<PhoneDB> phoneDBList = phoneDBDao
+                .queryBuilder()
+                .build()
+                .list();
+
+        if (phoneDBList.size() > 0) {
+
+            PhoneDB premierPhone = phoneDBList.get(0);
+            PersonDB personDB = premierPhone.getPerson();
+
+            Toast.makeText(this,
+                    "Email du premier phone "+ personDB.getEmail(),
+                    Toast.LENGTH_SHORT)
+                    .show();
+        }
+
+    }
+
+    public void fillDatabase(List<PersonResponse> personResponseList) {
+        // Cette fonction a pour but de remplir la DB
+
+        DatabaseManager manager = DatabaseManager.getIntances(this);
+        PersonDBDao personDBDao = manager.getPersonDBDao();
+        PhoneDBDao phoneDBDao = manager.getPhoneDBDao();
+
+        //for (PersonResponse personResponse : personResponseList) {
+        for (int index = 0; index < personResponseList.size(); index++) {
+
+            PersonResponse personResponse = personResponseList.get(index);
+
+            PersonDB personDB = new PersonDB();
+            personDB.setId(index);
+            personDB.setEmail(personResponse.getEmail());
+
+            personDBDao.insertOrReplace(personDB);
+            //personDBDao.insert(personDB);
+            //personDBDao.update(personDB);
+
+            PhoneDB phoneDB = new PhoneDB();
+            phoneDB.setId(index);
+            phoneDB.setPhoneNumber(personResponse.getPhone());
+            phoneDB.setPersonId(index);
+
+            phoneDBDao.insertOrReplace(phoneDB);
+
+        }
+
+        deleteJamesEmailInDatabase();
+    }
+
+    public void deleteJamesEmailInDatabase() {
+        // Cette fonctione va supprimer les personnes qui contienne 'james' dans l'email
+
+        DatabaseManager manager = DatabaseManager.getIntances(this);
+        PersonDBDao personDBDao = manager.getPersonDBDao();
+
+        personDBDao
+                .queryBuilder()
+                .where(PersonDBDao.Properties.Email.like("%james%"))
+                .buildDelete()
+                .executeDeleteWithoutDetachingEntities();
+
+        getPersonFromDB();
     }
 }
