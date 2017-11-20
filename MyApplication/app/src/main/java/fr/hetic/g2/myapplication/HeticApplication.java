@@ -5,6 +5,8 @@ import android.app.Application;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import fr.hetic.g2.myapplication.database.DatabaseManager;
+
 /**
  * Created by Florian ALONSO on 11/13/17.
  * For Neopixl

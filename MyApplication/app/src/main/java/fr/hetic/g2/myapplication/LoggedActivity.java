@@ -26,6 +26,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fr.hetic.g2.myapplication.database.DatabaseManager;
+import fr.hetic.g2.myapplication.database.PersonDB;
+import fr.hetic.g2.myapplication.database.PersonDBDao;
+import fr.hetic.g2.myapplication.database.PhoneDB;
+import fr.hetic.g2.myapplication.database.PhoneDBDao;
 import fr.hetic.g2.myapplication.item.ContactItem;
 import fr.hetic.g2.myapplication.response.PersonResponse;
 import fr.hetic.g2.myapplication.response.RandomNamesResponse;
@@ -119,7 +124,10 @@ public class LoggedActivity extends AppCompatActivity {
                         .listener(new RequestListener<RandomNamesResponse>() {
                             @Override
                             public void onSuccess(Request request, NetworkResponse response, RandomNamesResponse result) {
-                                fillRecyclerFromRandomNamesResponse(result);
+                                fillRecyclerFromRandomNamesResponse(result); // Affiche les valeur a l'ecrans
+                                fillDatabase(result.getResults()); // Remplie la BDD
+                                deleteJames(); // Supprime les James de la BDD
+                                diplayPeopleNumber(); // Affiche le nombre de personne dans la BDD
                             }
 
                             @Override
@@ -144,6 +152,81 @@ public class LoggedActivity extends AppCompatActivity {
         }
 
         fillrecycler(distantNameList);
+    }
+
+    public void diplayPeopleNumber() {
+        // Affiche le nombre de personne en DB grace a un TOAST.
+
+        DatabaseManager manager = DatabaseManager.getInstance(this);
+        PersonDBDao personDBDao = manager.getPersonDao();
+
+        List<PersonDB> personDBList = personDBDao
+                .queryBuilder()
+                .where(PersonDBDao.Properties.Firstname.isNotNull())
+                .list();
+
+        int size = personDBList.size();
+
+        Toast.makeText(this,
+                "Il y'a "+ size +" Personnes",
+                Toast.LENGTH_SHORT).show();
+
+
+        // recupere une seulle personne
+        PhoneDB phoneDB = manager.getPhoneDao().
+                queryBuilder()
+                .where(PhoneDBDao.Properties.Id.eq(0))
+                .unique();
+        Toast.makeText(this,
+                "La premiere personne est : "+ phoneDB.getPerson().getFirstname(),
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public void fillDatabase(List<PersonResponse> personResponseList) {
+        // Remplie la DB grace a la requette internet
+
+        DatabaseManager manager = DatabaseManager.getInstance(this);
+        PersonDBDao personDBDao = manager.getPersonDao();
+
+        for (int index = 0; index < personResponseList.size(); index++) {
+            PersonResponse personResponse = personResponseList.get(index);
+
+            long id = index;
+            String firstname = personResponse.getName().getFirst();
+            String lastname = personResponse.getName().getLast();
+
+            PersonDB personDB = new PersonDB();
+            personDB.setId(id);
+            personDB.setFirstname(firstname);
+            personDB.setLastname(lastname);
+
+            personDBDao.insertOrReplace(personDB);
+            //personDBDao.insert(personDB);
+            //personDBDao.update(personDB);
+            //personDBDao.delete(personDB);
+
+            long idPhone = index;
+            String phoneNumber = personResponse.getPhone();
+
+            PhoneDB phoneDB = new PhoneDB();
+            phoneDB.setId(idPhone);
+            phoneDB.setNumber(phoneNumber);
+            phoneDB.setPersonId(id);
+
+            manager.getPhoneDao().insertOrReplace(phoneDB);
+        }
+    }
+
+    public void deleteJames() {
+        // Supprime tous les james si y'a
+
+        DatabaseManager manager = DatabaseManager.getInstance(this);
+        PersonDBDao personDBDao = manager.getPersonDao();
+
+        personDBDao.queryBuilder()
+                .where(PersonDBDao.Properties.Firstname.like("%kai%"))
+                .buildDelete()
+                .executeDeleteWithoutDetachingEntities();
     }
 
 }
