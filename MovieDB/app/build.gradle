@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "fr.hetic.mymoviedb.moviedb"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // Butter knife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // Glide
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
+
+    // Spitfire
+    compile 'com.neopixl:spitfire:1.0.0'
+    compile 'com.android.volley:volley:1.0.0'
+
+    // GreenDao
+    compile 'org.greenrobot:greendao:3.2.2'
+
+    // FastAdapter
+    implementation 'com.mikepenz:fastadapter:3.0.0@aar'
+    implementation 'com.mikepenz:fastadapter-commons:3.0.0@aar'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+}
