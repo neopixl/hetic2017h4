@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol ModalViewControllerDelegate {
+    func youShouldCloseMe(modal: ModalViewController)
+}
+
 class ModalViewController: UIViewController {
 
     @IBOutlet weak var closeButton: UIButton!
+    
+    var delegate: ModalViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +34,8 @@ class ModalViewController: UIViewController {
     @IBAction func didTapOnClose(_ sender: Any) {
         print("CLOSE")
         
-        // self.dismiss(animated: true, completion: nil)
-        // N'execute pas de code lorsque c'est fini
-        
-        self.dismiss(animated: true) {
-            print("C'est OK")
+        if let vraiDelegate = delegate {
+            vraiDelegate.youShouldCloseMe(modal: self)
         }
     }
     

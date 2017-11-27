@@ -13,7 +13,39 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let animal = Animal()
+        // animal.testPrivate() --> Cette methode est privée
+        // animal.testFilePrivate() --> Cette methode est privée
+        animal.testInternal()
+        animal.testPublic()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "modal" {
+            
+            let destination = segue.destination
+            if let modalController = destination as? ModalViewController {
+                
+                modalController.delegate = self
+                
+            }
+        }
     }
 
+}
+
+
+extension ViewController: ModalViewControllerDelegate {
+    
+    func youShouldCloseMe(modal: ModalViewController) {
+        
+        modal.dismiss(animated: true) {
+            print("C'est fermé")
+        }
+        
+        //modal.dismiss(animated: true, completion: nil)
+        //modal.dismiss(animated: true)
+    }
 }
 

@@ -9,9 +9,52 @@
 import Foundation
 
 
+class Animal {
+    let name = ""
+    
+    private func testPrivate() {
+        print("testPrivate")
+    }
+    
+    fileprivate func testFilePrivate() {
+        print("testFilePrivate")
+    }
+    
+    internal func testInternal() {
+        print("testInternal")
+    }
+    
+    func testInternal2() {
+        print("testInternal")
+    }
+    
+    public func testPublic() {
+        print("testPublic")
+    }
+    
+    open func testOpen() {
+        print("testOpen")
+    }
+}
+
+class Pokemon : Animal {
+    override fileprivate func testFilePrivate() {
+        print("testFilePrivate Pokemon")
+    }
+}
+
+
+
+enum Gender {
+    case male
+    case female
+}
+
 class Person {
     var firstname = ""
     var lastname = ""
+    var gender = Gender.male
+    var age = 30
     
     
     func testLet() {
@@ -136,15 +179,93 @@ class Person {
         for value in intArray {
             print("\(value)")
         }
+    }
+    
+    
+    func testSwitchCase() {
+        
+        let monInt = 2
+        switch monInt {
+        case 1:
+            print("1")
+        case 2:
+            print("OUI")
+        default:
+            print("NON")
+        }
         
         
+        let monString = "a"
+        switch monString {
+        case "a", "b":
+            print("OUI")
+        default:
+            print("NON")
+        }
         
         
+        switch self.gender {
+        case .male:
+            print("MALE")
+        case .female:
+            print("FEMALE")
+        }
         
+    }
+    
+    func calculateYears() -> Int {
+        let now = Date()
+        let calendar = Calendar.current
+        let yearsComponenent = calendar.dateComponents([.year], from: now)
+        let years = yearsComponenent.year ?? 0
+        
+        return years - self.age
+    }
+    
+    
+    
+    func testOther () {
+        
+        var monIntList: [Int]? = nil
+        
+        var monIntListAvecOptionel: [Int?] = [1,2, nil, 4]
+        
+        var awesome: [Int?]? = [1,2,3,4,nil,123,nil]
+        awesome = nil
+        
+        
+        var offDoom: [[[Int?]]?] = []
         
     }
     
     
+    func testOther2() {
+        var delegate: ModalViewControllerDelegate? = nil
+        let controller = ModalViewController()
+        
+        if let vraiDelegate = delegate {
+            vraiDelegate.youShouldCloseMe(modal: controller)
+        }
+        
+        delegate?.youShouldCloseMe(modal: controller)
+    }
+    
+    
+    func testOptionExlamation() {
+        var optInt: Int? = 3
+        optInt = nil
+        
+        let result: Int! = optInt?.distance(to: 3) // ---> zero
+        let _ = result.advanced(by: 1)
+        
+        
+        var optIntExlamation: Int! = 3
+        let _ = optIntExlamation.advanced(by: 3)
+        
+        optIntExlamation = nil
+        let _ = optIntExlamation.advanced(by: 3)
+        
+    }
     
     
     
