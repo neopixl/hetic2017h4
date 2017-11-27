@@ -15,6 +15,8 @@
 		0E7293F41FCC0AE200174729 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7293F31FCC0AE200174729 /* ModalViewController.swift */; };
 		0E7293F71FCC10D500174729 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7293F61FCC10D500174729 /* SecondViewController.swift */; };
 		0E7293FA1FCC140A00174729 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7293F91FCC140A00174729 /* Person.swift */; };
+		0E94A3491FCC55A100022545 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94A3481FCC55A100022545 /* LoginViewController.swift */; };
+		0E94A34B1FCC5DA700022545 /* GrantedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94A34A1FCC5DA700022545 /* GrantedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		0E7293F31FCC0AE200174729 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		0E7293F61FCC10D500174729 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		0E7293F91FCC140A00174729 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		0E94A3481FCC55A100022545 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0E94A34A1FCC5DA700022545 /* GrantedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrantedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				0E7293E31FCC009D00174729 /* ViewController.swift */,
 				0E7293F31FCC0AE200174729 /* ModalViewController.swift */,
 				0E7293F61FCC10D500174729 /* SecondViewController.swift */,
+				0E94A3481FCC55A100022545 /* LoginViewController.swift */,
+				0E94A34A1FCC5DA700022545 /* GrantedViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -161,7 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E94A3491FCC55A100022545 /* LoginViewController.swift in Sources */,
 				0E7293FA1FCC140A00174729 /* Person.swift in Sources */,
+				0E94A34B1FCC5DA700022545 /* GrantedViewController.swift in Sources */,
 				0E7293F71FCC10D500174729 /* SecondViewController.swift in Sources */,
 				0E7293E41FCC009D00174729 /* ViewController.swift in Sources */,
 				0E7293F41FCC0AE200174729 /* ModalViewController.swift in Sources */,

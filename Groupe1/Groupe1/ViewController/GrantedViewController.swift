@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  GrantedViewController.swift
 //  Groupe1
 //
 //  Created by Florian ALONSO on 11/27/17.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-    
-    var message = ""
-    var person: Person?
-    @IBOutlet weak var monMessageLabel: UILabel!
+class GrantedViewController: UIViewController {
+
+    @IBOutlet weak var grantedLabel: UILabel!
+    var email = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        monMessageLabel.text = message
+        
+        grantedLabel.text = "Bravo \(email) !!!!"
     }
 
 }
