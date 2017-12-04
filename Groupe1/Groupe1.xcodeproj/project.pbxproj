@@ -11,6 +11,8 @@
 		0E6F3D431FD53C9500FF1CB1 /* SerieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F3D421FD53C9500FF1CB1 /* SerieViewController.swift */; };
 		0E6F3D461FD53ECF00FF1CB1 /* SerieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F3D451FD53ECF00FF1CB1 /* SerieTableViewCell.swift */; };
 		0E6F3D491FD5447500FF1CB1 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F3D481FD5447500FF1CB1 /* Serie.swift */; };
+		0E6F3D571FD5808F00FF1CB1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F3D561FD5808F00FF1CB1 /* UserManager.swift */; };
+		0E6F3D591FD5867500FF1CB1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F3D581FD5867500FF1CB1 /* User.swift */; };
 		0E7293E21FCC009D00174729 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7293E11FCC009D00174729 /* AppDelegate.swift */; };
 		0E7293E41FCC009D00174729 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7293E31FCC009D00174729 /* ViewController.swift */; };
 		0E7293E71FCC009D00174729 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E7293E51FCC009D00174729 /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 		0E6F3D421FD53C9500FF1CB1 /* SerieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieViewController.swift; sourceTree = "<group>"; };
 		0E6F3D451FD53ECF00FF1CB1 /* SerieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieTableViewCell.swift; sourceTree = "<group>"; };
 		0E6F3D481FD5447500FF1CB1 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
+		0E6F3D561FD5808F00FF1CB1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		0E6F3D581FD5867500FF1CB1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0E7293DE1FCC009D00174729 /* Groupe1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Groupe1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E7293E11FCC009D00174729 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E7293E31FCC009D00174729 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,8 +72,17 @@
 			isa = PBXGroup;
 			children = (
 				0E6F3D481FD5447500FF1CB1 /* Serie.swift */,
+				0E6F3D581FD5867500FF1CB1 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0E6F3D551FD5807A00FF1CB1 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0E6F3D561FD5808F00FF1CB1 /* UserManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		0E7293D51FCC009D00174729 = {
@@ -97,6 +110,7 @@
 				0E7293F51FCC0B0F00174729 /* ViewController */,
 				0E6F3D441FD53EA800FF1CB1 /* Cells */,
 				0E6F3D471FD5444B00FF1CB1 /* Model */,
+				0E6F3D551FD5807A00FF1CB1 /* Manager */,
 				0E7293E11FCC009D00174729 /* AppDelegate.swift */,
 				0E7293E51FCC009D00174729 /* Main.storyboard */,
 				0E7293E81FCC009D00174729 /* Assets.xcassets */,
@@ -223,10 +237,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Groupe1/Pods-Groupe1-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -281,7 +299,9 @@
 				0E6F3D431FD53C9500FF1CB1 /* SerieViewController.swift in Sources */,
 				0E7293F71FCC10D500174729 /* SecondViewController.swift in Sources */,
 				0E7293E41FCC009D00174729 /* ViewController.swift in Sources */,
+				0E6F3D591FD5867500FF1CB1 /* User.swift in Sources */,
 				0E7293F41FCC0AE200174729 /* ModalViewController.swift in Sources */,
+				0E6F3D571FD5808F00FF1CB1 /* UserManager.swift in Sources */,
 				0E7293E21FCC009D00174729 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

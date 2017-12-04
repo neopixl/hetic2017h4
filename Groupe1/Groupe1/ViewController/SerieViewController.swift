@@ -22,7 +22,7 @@ class SerieViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        var newSerie = Serie(withTheTitle: "The Walking Dead", andTheScore: 4.3)
+        var newSerie = Serie(withTheTitle: "The Walking Dead The Walking Dead The Walking Dead The Walking Dead The Walking Dead", andTheScore: 4.3)
         self.serieList.append(newSerie)
         
         newSerie = Serie(withTheTitle: "Rick and Morty", andTheScore: 5.0)

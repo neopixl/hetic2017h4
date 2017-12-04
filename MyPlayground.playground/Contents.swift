@@ -45,3 +45,174 @@ let person = Person(firstname: "Florian", lastname: "ALONSO", birthday: now)
 person.sayHello()
 
 
+
+
+
+
+
+
+
+
+class Product {
+    var title = "Mon produit"
+    var price = 10
+    
+    init() {
+        
+    }
+}
+
+class CheckoutManger {
+    var productList = [Product]()
+    
+    func add(product: Product) {
+        productList.append(product)
+    }
+    
+    func getSum() -> Int {
+        return productList.reduce(0, { (previousResult, product) -> Int in
+            return previousResult + product.price
+        })
+    }
+    
+}
+
+class CheckoutMangerSingle {
+    
+    static let shared: CheckoutMangerSingle = {
+        return CheckoutMangerSingle()
+    }()
+    
+    private init() {
+        
+    }
+    
+    var productList = [Product]()
+    
+    func add(product: Product) {
+        productList.append(product)
+    }
+    
+    func getSum() -> Int {
+        return productList.reduce(0, { (previousResult, product) -> Int in
+            return previousResult + product.price
+        })
+    }
+    
+}
+
+
+
+
+let checkoutManager = CheckoutManger()
+checkoutManager.add(product: Product())
+checkoutManager.add(product: Product())
+checkoutManager.add(product: Product())
+checkoutManager.getSum()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let checkoutMangerTwo = CheckoutManger()
+checkoutMangerTwo.add(product: Product())
+checkoutMangerTwo.add(product: Product())
+checkoutMangerTwo.getSum()
+
+
+
+
+
+
+
+
+
+let checkoutMangerSingle = CheckoutMangerSingle.shared
+checkoutMangerSingle.add(product: Product())
+checkoutMangerSingle.add(product: Product())
+checkoutMangerSingle.add(product: Product())
+checkoutMangerSingle.getSum()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let checkoutMangerSingleTwo = CheckoutMangerSingle.shared
+checkoutMangerSingleTwo.add(product: Product())
+checkoutMangerSingleTwo.add(product: Product())
+
+checkoutMangerSingleTwo.getSum()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
