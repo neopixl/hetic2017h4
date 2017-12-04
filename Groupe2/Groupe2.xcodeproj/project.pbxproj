@@ -21,6 +21,7 @@
 		0E6F3D541FD56D1A00FF1CB1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F3D531FD56D1A00FF1CB1 /* UserManager.swift */; };
 		0E94A34D1FCC6BE600022545 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94A34C1FCC6BE600022545 /* LoginViewController.swift */; };
 		0E94A34F1FCC734700022545 /* GrantedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E94A34E1FCC734700022545 /* GrantedViewController.swift */; };
+		0EA9A6DC1FD5A14800735BF8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9A6DB1FD5A14800735BF8 /* User.swift */; };
 		7525D923E7BC5DC9EFB77057 /* Pods_Groupe2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10424CF28881D4D163D9E14F /* Pods_Groupe2.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		0E6F3D531FD56D1A00FF1CB1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		0E94A34C1FCC6BE600022545 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E94A34E1FCC734700022545 /* GrantedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrantedViewController.swift; sourceTree = "<group>"; };
+		0EA9A6DB1FD5A14800735BF8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10424CF28881D4D163D9E14F /* Pods_Groupe2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Groupe2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32965BF74120B3C4749F3794 /* Pods-Groupe2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groupe2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Groupe2/Pods-Groupe2.release.xcconfig"; sourceTree = "<group>"; };
 		9DD609968F644BD8AEBA9E89 /* Pods-Groupe2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groupe2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Groupe2/Pods-Groupe2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				0E6F3D501FD55EB300FF1CB1 /* Serie.swift */,
+				0EA9A6DB1FD5A14800735BF8 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,11 +252,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Groupe2/Pods-Groupe2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +299,7 @@
 				0E6F3D4B1FD558A800FF1CB1 /* SerieViewController.swift in Sources */,
 				0E0FB88E1FCC2C6200503748 /* SecondViewController.swift in Sources */,
 				0E0FB87B1FCC1CC100503748 /* ViewController.swift in Sources */,
+				0EA9A6DC1FD5A14800735BF8 /* User.swift in Sources */,
 				0E0FB88C1FCC26F400503748 /* ModalViewController.swift in Sources */,
 				0E6F3D541FD56D1A00FF1CB1 /* UserManager.swift in Sources */,
 				0E0FB8791FCC1CC100503748 /* AppDelegate.swift in Sources */,

@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +17,24 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen-background" translatesAutoresizingMaskIntoConstraints="NO" id="b9d-jY-gWx">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen-logo" translatesAutoresizingMaskIntoConstraints="NO" id="aZU-N3-Y16">
+                                <rect key="frame" x="10" y="70" width="355" height="440"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b9d-jY-gWx" secondAttribute="bottom" id="C2R-Se-bJ1"/>
+                            <constraint firstItem="aZU-N3-Y16" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="JQV-O2-2rL"/>
+                            <constraint firstItem="b9d-jY-gWx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OqK-9L-o1B"/>
+                            <constraint firstItem="aZU-N3-Y16" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="10" id="QA5-ZY-MBd"/>
+                            <constraint firstAttribute="trailing" secondItem="aZU-N3-Y16" secondAttribute="trailing" constant="10" id="r6L-z5-4Qi"/>
+                            <constraint firstItem="b9d-jY-gWx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vrJ-3r-owE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b9d-jY-gWx" secondAttribute="trailing" id="ygf-nv-hBj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -22,4 +43,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="splashscreen-background" width="583" height="356"/>
+        <image name="splashscreen-logo" width="1000" height="440"/>
+    </resources>
 </document>

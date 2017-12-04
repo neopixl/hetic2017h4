@@ -12,6 +12,8 @@ import SwiftyJSON
 
 class UserManager {
     
+    typealias UserDetailCompletion = (_ userOpt: User?) -> Void
+    
     static let shared: UserManager = {
         return UserManager()
     }()
@@ -20,12 +22,12 @@ class UserManager {
         
     }
     
-    func getUserDetails() {
-        let parameters = ["result": "1"]
-        
-        let headers = ["Hetic-Groupe": "2"]
-        
+    func getUserDetails(completionHandler: @escaping UserDetailCompletion) {
         let url = "https://randomuser.me/api/"
+        
+        let parameters = ["results": "1"]
+        
+        let headers = ["Hetic-Groupe" : "2"]
         
         Alamofire
             .request(url,
@@ -39,20 +41,31 @@ class UserManager {
                 case .success(let data):
                     
                     let json = JSON(data)
-                    let code = json["info"]["results"].intValue
+                    let numberResults = json["info"]["results"].intValue
+                    print("SUCCES : Number of results : \(numberResults)")
                     
-                    print("Nombre de resultats : \(code)")
+                    let resultsJsonList = json["results"].arrayValue
+                    if resultsJsonList.isEmpty == false {
+                        
+                        let firstUserJson = resultsJsonList[0]
+                        
+                        let user = User(json: firstUserJson)
+                        completionHandler(user)
+                        
+                        
+                    }
                     
                     break
                 case .failure(let error):
+                    print("INTERNET ERROR : \(error)")
                     
-                    print("Fail \(error)")
+                    completionHandler(nil)
                     
                     break
                 }
-        }
-        
-        
+                
+                
+        }        
         
     }
 }

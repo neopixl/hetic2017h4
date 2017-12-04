@@ -256,16 +256,62 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zeF-wa-lIL">
+                                <rect key="frame" x="112" y="91" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="hi6-4O-tdf"/>
+                                    <constraint firstAttribute="height" constant="150" id="pa1-L6-2T0"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hch-6M-ncb">
+                                <rect key="frame" x="20" y="281" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTS-el-D8N">
+                                <rect key="frame" x="20" y="322" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRR-pP-jOt">
+                                <rect key="frame" x="20" y="363" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEf-eP-pah">
+                                <rect key="frame" x="20" y="404" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hch-6M-ncb" firstAttribute="leading" secondItem="WQG-jA-qOG" secondAttribute="leading" constant="20" id="0kc-ED-Hvq"/>
+                            <constraint firstItem="ZRR-pP-jOt" firstAttribute="top" secondItem="cTS-el-D8N" secondAttribute="bottom" constant="20" id="2dC-ro-Ehu"/>
+                            <constraint firstItem="cEf-eP-pah" firstAttribute="top" secondItem="ZRR-pP-jOt" secondAttribute="bottom" constant="20" id="3eL-MI-Nn3"/>
+                            <constraint firstItem="zeF-wa-lIL" firstAttribute="centerX" secondItem="oHN-NZ-U3D" secondAttribute="centerX" id="4re-mZ-Umf"/>
                             <constraint firstItem="gL2-lE-L2j" firstAttribute="centerX" secondItem="WQG-jA-qOG" secondAttribute="centerX" id="Fkz-LS-rMA"/>
+                            <constraint firstItem="ZRR-pP-jOt" firstAttribute="leading" secondItem="cTS-el-D8N" secondAttribute="leading" id="IJ8-Qs-i1R"/>
                             <constraint firstItem="gL2-lE-L2j" firstAttribute="top" secondItem="WQG-jA-qOG" secondAttribute="top" constant="20" id="OqP-Z6-2oi"/>
+                            <constraint firstItem="cTS-el-D8N" firstAttribute="leading" secondItem="hch-6M-ncb" secondAttribute="leading" id="V2P-6E-I4W"/>
+                            <constraint firstItem="zeF-wa-lIL" firstAttribute="top" secondItem="gL2-lE-L2j" secondAttribute="bottom" constant="30" id="hAb-Vx-1bN"/>
+                            <constraint firstItem="cEf-eP-pah" firstAttribute="leading" secondItem="ZRR-pP-jOt" secondAttribute="leading" id="jZf-5U-qwZ"/>
+                            <constraint firstItem="hch-6M-ncb" firstAttribute="top" secondItem="zeF-wa-lIL" secondAttribute="bottom" constant="40" id="nXB-Fk-EWy"/>
+                            <constraint firstItem="cTS-el-D8N" firstAttribute="top" secondItem="hch-6M-ncb" secondAttribute="bottom" constant="20" id="tab-Ku-BaH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WQG-jA-qOG"/>
                     </view>
                     <connections>
+                        <outlet property="emailLabel" destination="cEf-eP-pah" id="JAn-dz-gQd"/>
+                        <outlet property="firstnameLabel" destination="hch-6M-ncb" id="Skf-H8-ZCG"/>
                         <outlet property="grantedLabel" destination="gL2-lE-L2j" id="Fxn-0s-dsn"/>
+                        <outlet property="lastnameLabel" destination="cTS-el-D8N" id="YQv-Dx-lDa"/>
+                        <outlet property="phoneLabel" destination="ZRR-pP-jOt" id="UXd-6j-Cmy"/>
+                        <outlet property="pictureImageView" destination="zeF-wa-lIL" id="hWc-jR-wPn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIu-Ti-F8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
