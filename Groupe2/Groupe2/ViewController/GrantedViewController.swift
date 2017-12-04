@@ -21,5 +21,8 @@ class GrantedViewController: UIViewController {
         grantedLabel.textColor = UIColor.blue
         grantedLabel.font = UIFont.systemFont(ofSize: 14)
         grantedLabel.text = "Hello \(monEmail) !!!!"
+        
+        
+        UserManager.shared.getUserDetails()
     }
 }
