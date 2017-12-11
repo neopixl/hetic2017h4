@@ -7,15 +7,31 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    var persistentContainer: NSPersistentContainer!
+    
+    func initDatabase() {
+        self.persistentContainer = NSPersistentContainer(name: "Model")
+        
+        self.persistentContainer.loadPersistentStores { (description, error) in
+            // This code will be called right after the creation of the DB
+            
+            print("MAYBE ERROR : \(error)")
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        initDatabase()
+        
         return true
     }
 
