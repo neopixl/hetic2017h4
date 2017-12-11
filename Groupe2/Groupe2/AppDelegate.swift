@@ -7,15 +7,41 @@
 //
 
 import UIKit
+import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    var persistentContainer: NSPersistentContainer!
+    
+    func initDatabase() {
+        self.persistentContainer = NSPersistentContainer(name: "Model")
+        
+        self.persistentContainer.loadPersistentStores { (description, error) in
+            // This code will be called right after the DB creation
+            
+            print("MAYBE ERROR : \(String(describing: error))")
+        }
+    }
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        // Init the database
+        initDatabase()
+        
+        
+        // Init Firebase
+        FirebaseApp.configure()
+        
+        
+        
         return true
     }
 

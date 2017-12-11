@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -19,10 +20,19 @@ class ViewController: UIViewController {
         // animal.testFilePrivate() --> Cette methode est privée
         animal.testInternal()
         animal.testPublic()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "modal" {
+            
+            let title = "FirstModal"
+            
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
+                ])
             
             let destination = segue.destination
             if let modalController = destination as? ModalViewController {
