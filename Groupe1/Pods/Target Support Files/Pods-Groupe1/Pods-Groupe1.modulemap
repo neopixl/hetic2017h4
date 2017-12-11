@@ -1,0 +1,6 @@
+framework module Pods_Groupe1 {
+  umbrella header "Pods-Groupe1-umbrella.h"
+
+  export *
+  module * { export * }
+}
